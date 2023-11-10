@@ -1,0 +1,11 @@
+name: ShellCheck
+run-name: ${{ github.workflow }} is testing ${{ github.actor }} push 🚀
+on [push]
+jobs 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ShellCheck
+	uses: azohra/shell-linter@latest
