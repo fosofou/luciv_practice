@@ -22,7 +22,6 @@ source=https://spbu.ru/sveden/education
 destination=./downloads/
 probe=false
 
-
 function check_arg()
 {
     if [[ "$2" == "-*" ]]; then
@@ -66,6 +65,15 @@ do
     esac
 done
 
+recoll_index () {
+    #conf
+    mkdir -p .recoll
+    echo "topdirs = $(realpath "$destination")" > ./.recoll/recoll.conf
+    
+    # creating and updating the index 
+    recollindex -c ./.recoll
+}
+
 # check if the directory already exists
 if ! [ -e "$destination" ]; then
     mkdir ${destination}
@@ -79,5 +87,6 @@ for url in $(dl_spbu_oop); do
     rm "$destination${file_num}.zip"
     ((++file_num))
 done
+recoll_index
 
 
