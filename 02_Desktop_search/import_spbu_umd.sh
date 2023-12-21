@@ -5,7 +5,7 @@ dl_spbu_s_e () {
 }
 
 dl_spbu_oop () {
-    dl_spbu_s_e | grep -o -P "'https://nc\.spbu\.ru/.+?'" | sed "s/'//g" | sort | uniq | ($probe && (sort -R | head -n 10)) || cat
+    dl_spbu_s_e | grep -o -P "'https://nc\.spbu\.ru/.+?'" | sed "s/'//g" | sort | uniq | ($probe && (sort -R | head -n 10)) | cat
      
 }
 
