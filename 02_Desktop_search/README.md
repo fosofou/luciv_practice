@@ -1,4 +1,4 @@
-# Desctop Search
+# Desktop Search
 
 import_spbu_umd.sh - a bash script for loading and unpacking resources of SPbU.
 
@@ -24,4 +24,4 @@ import_spbu_umd.sh - a bash script for loading and unpacking resources of SPbU.
 
 - unzip
 
-- recoll - Desctop text search. [Manual]([Recoll user manual](https://www.lesbonscomptes.com/recoll/usermanual/usermanual.html#RCL.SEARCH.GUI.RESULTLIST.MENU.SNIPPETS)) 
+- recoll - Desktop text search. [Manual]([Recoll user manual](https://www.lesbonscomptes.com/recoll/usermanual/usermanual.html#RCL.SEARCH.GUI.RESULTLIST.MENU.SNIPPETS)) 
