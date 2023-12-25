@@ -1,0 +1,16 @@
+[output.txt] linebreaks=false, flush=false
+stdoutstderr
+
+[output.txt] linebreaks=false, flush=true
+stdoutstderr
+
+[output.txt] linebreaks=true, flush=false
+stdout
+stderr
+
+
+[output.txt] linebreaks=true, flush=true
+stdout
+stderr
+
+
