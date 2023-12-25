@@ -1,4 +1,4 @@
-name: Build Fractal
+name: Cmake build fractal
 
 on:
   push:
@@ -18,16 +18,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - uses: lukka/get-cmake@latest
-
-    - name: Set up CMake
-      uses: lukka/run-cmake@v10
-      with:
-        cmakeListsOrSettingsJson: '${{ github.workspace }}/03_Fractal/CMakeLists.txt'
-        buildWithCMake: true
-        cmakeGenerator: 'Ninja'
-        cmakeBuildType: 'Release'
+    - name: Configure CMake
+      run: cmake -S ${{github.workspace}}/03_Fractal -B ${{github.workspace}}/03_Fractal/build 
 
     - name: Build
-      run: make
+      run: cmake --build ${{github.workspace}}/03_Fractal/build
+
+
 
