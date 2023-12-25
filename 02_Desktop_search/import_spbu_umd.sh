@@ -5,7 +5,7 @@ dl_spbu_s_e () {
 }
 
 dl_spbu_oop () {
-    dl_spbu_s_e | grep -o -P "'https://nc\.spbu\.ru/.+?'" | sed "s/'//g" | sort | uniq | ($probe && (sort -R | head -n 10) || cat)
+    dl_spbu_s_e | grep -o -P "'https://nc\.spbu\.ru/.+?'" | sed "s/'//g" | sort | uniq | ($probe && (sort -R | head -n 10)) | cat
      
 }
 
@@ -21,7 +21,6 @@ function download {
 source=https://spbu.ru/sveden/education
 destination=./downloads/
 probe=false
-
 
 function check_arg()
 {
@@ -39,7 +38,7 @@ fi
 
 eval set -- "$getopt_args"
 
-while [ true ]; 
+while true; 
 do
     case $1 in
     -s | --source)
@@ -50,7 +49,7 @@ do
     -d | destination)
         check_arg "$1" "$2"
 	destination=$2
-	if ! [ ${destination: -1} = "/" ]; then
+	if ! [ "${destination: -1}" = "/" ]; then
 	     destination="${destination}/"
 	fi
 	shift 2
@@ -66,9 +65,18 @@ do
     esac
 done
 
+recoll_index () {
+    #conf
+    mkdir -p .recoll
+    echo "topdirs = $(realpath "$destination")" > ./.recoll/recoll.conf
+
+    # creating and updating the index 
+    recollindex -c ./.recoll
+}
+
 # check if the directory already exists
 if ! [ -e "$destination" ]; then
-    mkdir ${destination}
+    mkdir "${destination}"
 fi
 
 file_num=0
@@ -79,5 +87,6 @@ for url in $(dl_spbu_oop); do
     rm "$destination${file_num}.zip"
     ((++file_num))
 done
+recoll_index
 
 
