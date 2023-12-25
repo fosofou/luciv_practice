@@ -21,8 +21,10 @@ jobs:
     - name: Set up CMake
       uses: lukka/run-cmake@v3
       with:
-        cmakeListsOrSettingsJson: 'CMakeLists.txt'
-        makeTargets: 'all'
+        cmakeListsOrSettingsJson: 03_Fractal/CMakeLists.txt
+        buildWithCMake: true
+        cmakeGenerator: 'Ninja'
+        cmakeBuildType: 'Release'
 
     - name: Build
       run: make
