@@ -1,0 +1,28 @@
+name: Cmake build fractal
+
+on:
+  push:
+    branches:
+      - main
+      - 03_FRACTAL
+  pull_request:
+    branches:
+      - main
+      - 03_FRACTAL
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure CMake
+      run: cmake -S ${{github.workspace}}/03_Fractal -B ${{github.workspace}}/03_Fractal/build 
+
+    - name: Build
+      run: cmake --build ${{github.workspace}}/03_Fractal/build
+
+
+
